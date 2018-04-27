@@ -22,6 +22,13 @@
   <p>Location: {{bird.nest.location}}</p>
   <p>Materials: {{bird.nest.materials}}</p>
 
+  <h3>Height</h3>
+  {{#if bird.height}}
+    <p>{{bird.height}}<p>
+  {{else}}
+    <p>{{bird.name}} height is unkown.</p>
+  {{/if}}
+
 </div>
 
 <div class="sighting-dates">
@@ -56,5 +63,14 @@
       <p>No sightings for {{bird.name}}</p>
     {{/each}}
   </div>
+
+</div>
+
+<div>
+
+  <form class="delete-form" action="/delete" method="POST">
+    <input class="delete-button" type="submit" name="delete" value="Delete">
+    <input type="hidden" name="_id" value="{{this._id}}">
+  </form>
 
 </div>

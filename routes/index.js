@@ -90,4 +90,22 @@ router.post('/addSighting', function(req, res, next){
     });
 });
 
+router.post('/delete', function(req, res, next){
+
+  Task.findByIdAndRemove(req.body._id)
+    .then( (deletedTask) => {
+      if (deletedTask) {
+        req.flash('info', 'Bird Sighting Deleted.')
+        res.redirect('/');
+      } else {
+        var error = new Error('Bird Sighting Not Found')
+        error.status = 404;
+        next(err);
+      }
+    })
+    .catch( (err) => {
+      next(err);
+    })
+});
+
 module.exports = router;
