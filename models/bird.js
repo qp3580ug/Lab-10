@@ -12,12 +12,16 @@ var birdSchema = new mongoose.Schema({
       message: '{VALUE} is not valid, bird name must be at least 2 letters'
     }
   },
+  
   description: String,
+
   averageEggs: {
     type: Number,
     min: [1, 'Should be at least 1 egg.'],
     max: [50, 'Should not be more than 50 eggs.'] },
+
   endangered: { type: Boolean, default: false },
+
   datesSeen: [
     {
       type: Date,
@@ -35,7 +39,7 @@ var birdSchema = new mongoose.Schema({
     type: Number,
     min: [1, 'Should be at least 1cm.'],
     max: [300, 'Should not be more than 300cm.'],
-  }
+  },
 
   nest: {
     location: String,
